@@ -1,0 +1,7 @@
+net user USERNAME NEWPASS
+Remove-LocalUser -Name ""
+1st $Password = Read-Host -AsSecureString
+2ed New-LocalUser "NEW_ACCOUNT_NAME" -Password $Password -FullName "USER_FULL_NAME" -Description "Description of this account."
+net localgroup Administrators NAMEOFUSER /add
+net localgroup Administrators NAMEOFUSER /del
+Set-ADDefaultDomainPasswordPolicy -Identity DOMAINNAME -ComplexityEnabled $true -MinPasswordLength 7 -MinPasswordAge 1 -MaxPasswordAge 30 -LockoutDuration 00:30:00 -LockoutObservationWindow 00:30:00 -LockoutThreshold 3

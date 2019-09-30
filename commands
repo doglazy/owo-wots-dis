@@ -5,3 +5,13 @@ Remove-LocalUser -Name ""
 net localgroup Administrators NAMEOFUSER /add
 net localgroup Administrators NAMEOFUSER /del
 Set-ADDefaultDomainPasswordPolicy -Identity DOMAINNAME -ComplexityEnabled $true -MinPasswordLength 7 -MinPasswordAge 1 -MaxPasswordAge 30 -LockoutDuration 00:30:00 -LockoutObservationWindow 00:30:00 -LockoutThreshold 3
+1st Set-Service ServiceName -StartupType Automatic <-- enables service to run
+2ed Set-Service ServiceName -StartupType Disabled <-- disables service to run
+3erd Stop-Service ServiceName <-- stops service
+4th Start-Service ServiceName <-- runs service
+1st NetSh Advfirewall set allprofiles state off <-- turns off firewall
+2ed NetSh Advfirewall set allprofiles state on <-- turns on firewall
+3erd Netsh Advfirewall show allprofiles <-- shows status of firewall
+4th Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True <-- sets it to domain public or private
+5th New-NetFirewallRule -DisplayName "Block everything" -Direction Inbound -Action Block <-- havent tested should block all inbound
+6th New-NetFirewallRule -DisplayName "Allow program" -Direction Inbound -Program "C:\Program Files (x86)\insert program here" -RemoteAddress LocalSubnet -Action Allow <-- also havent tested should allow program listed in root

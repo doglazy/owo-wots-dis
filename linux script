@@ -1,4 +1,4 @@
 touch ~/bin/simpleSS ; chmod +x ~/bin/simpleSS ; nano ~/bin/simpleSS
 #!/bin/bash
-cd
-ls
+
+
